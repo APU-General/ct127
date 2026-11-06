@@ -1,0 +1,20 @@
+[project]
+name = "ct127-lab"
+version = "0.1.0"
+description = "CT127 Programming for Data Analysis labs"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "seaborn",
+    "ipykernel",
+    "openpyxl",
+    "requests",
+    "scipy",
+    "statsmodels",
+    "scikit-learn",
+]
+
+[tool.uv]
+package = false

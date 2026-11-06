@@ -1,0 +1,67 @@
+{
+  "name": "CT127 Data Analysis",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "containerEnv": {
+    "UV_LINK_MODE": "copy",
+    "UV_NO_PROGRESS": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "remoteEnv": {
+    "VIRTUAL_ENV": "${containerWorkspaceFolder}/.venv",
+    "PATH": "${containerWorkspaceFolder}/.venv/bin:${containerEnv:PATH}"
+  },
+  "postCreateCommand": "uv sync --quiet && uv run --quiet python -m ipykernel install --user --name ct127 --display-name 'Python (CT127)' > /dev/null && mkdir -p ~/.config/vscode-dev-containers && touch ~/.config/vscode-dev-containers/first-run-notice-already-shown",
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    },
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-toolsai.jupyter"],
+      "settings": {
+        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+        "python.terminal.activateEnvironment": false,
+        "python.terminal.activateEnvInCurrentTerminal": false,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "workbench.startupEditor": "none",
+        "workbench.tips.enabled": false,
+        "workbench.welcomePage.walkthroughs.openOnInstall": false,
+        "workbench.editorAssociations": {
+          "*.ipynb": "jupyter-notebook",
+          "*.md": "vscode.markdown.preview.editor"
+        },
+        "security.workspace.trust.enabled": false,
+        "telemetry.telemetryLevel": "off",
+        "extensions.ignoreRecommendations": true,
+        "git.openRepositoryInParentFolders": "never",
+        "jupyter.askForKernelRestart": false,
+        "editor.minimap.enabled": false,
+        "editor.inlineSuggest.enabled": false,
+        "editor.suggest.preview": false,
+        "github.copilot.enable": { "*": false },
+        "github.copilot.nextEditSuggestions.enabled": false,
+        "files.exclude": {
+          "**/.git": true,
+          "**/.venv": true,
+          "**/__pycache__": true,
+          "**/.ipynb_checkpoints": true,
+          "**/.DS_Store": true,
+          ".devcontainer": true,
+          ".vscode": true,
+          ".gitignore": true,
+          ".python-version": true,
+          "pyproject.toml": true,
+          "uv.lock": true
+        },
+        "files.watcherExclude": {
+          "**/.venv/**": true
+        },
+        "search.exclude": {
+          "**/.venv": true,
+          "uv.lock": true
+        }
+      }
+    }
+  }
+}

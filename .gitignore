@@ -1,0 +1,12 @@
+# Python environments and caches
+.venv/
+.venv-*/
+__pycache__/
+.ipynb_checkpoints/
+
+# Course data is downloaded from Moodle, never committed
+data/*
+!data/.gitkeep
+
+# OS files
+.DS_Store
